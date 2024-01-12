@@ -8,16 +8,19 @@ import { handleFieldValidation,handleFormValidation } from '@/validations/appVal
 
 export const Login = () => {
   const[inputControls,setInputControls]=useState(configuration)
-  
-
   const fnChange = (eve) => {
-   
     setInputControls(handleFieldValidation(eve,inputControls))
-
   }
 
   const handleLogin=()=>{
-    handleFormValidation()
+    const [isFormInvalid, clonedInputControls, dataObj]= handleFormValidation(inputControls)
+    if (isFormInvalid){
+      setInputControls(clonedInputControls)
+      return;
+    }
+
+    console.log("send the request with this data")
+    console.log(dataObj)
 
   }
 

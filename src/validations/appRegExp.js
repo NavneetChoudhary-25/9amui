@@ -1,4 +1,5 @@
 export const regExp = {
+
     "Required": {
         pattern: /./,
         errorMessage:"Please Enter Value"

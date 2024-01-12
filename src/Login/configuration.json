@@ -7,8 +7,7 @@
         "errorMessage": "",
         "value": "",
         "criteria": [
-            "Required",
-            "EmailFormat"
+            "Required","EmailFormat"
         ]
     },
     {
@@ -19,8 +18,7 @@
         "errorMessage": "",
         "value": "",
         "criteria": [
-            "Required",
-            "Min5Chars"
+            "Required","Min5Chars"
         ] 
     }
 ]
