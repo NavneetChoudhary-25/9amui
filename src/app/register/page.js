@@ -21,6 +21,7 @@ const Register = () => {
       return;
     }
     alert("sending request")
+    console.log(dataObj)
 
   }
   const prepareInputControls=(tag,obj)=>{

@@ -11,18 +11,27 @@ const validateField=(value,criteria, inputControlObj)=>{
 
 }
 export const handleFieldValidation = (eve, inputControls) => {
-
-    const { name, value } = eve.target;
+    const { name, value, type, checked } = eve.target;
     const clonedInputControls = JSON.parse(JSON.stringify(inputControls))
     const inputControlObj = clonedInputControls.find((obj) => {
         return obj.model === name
-
     })
-    inputControlObj.value = value
+    if(type === 'checkbox'){
+    const checkedValues =inputControlObj.value?inputControlObj.value.split(","):[]
+    if(checked){
+        checkedValues.push(value)
+    }else{
+        const index = checkedValues.indexOf(value);
+        checkedValues.splice(index,1);
+    }
+    inputControlObj.value = checkedValues.join();
+    }else{
+        inputControlObj.value = value
+    }
     inputControlObj.errorMessage = ""
     const criteria = inputControlObj.criteria
 
-    validateField(value,criteria,inputControlObj)
+    validateField(inputControlObj.value,criteria,inputControlObj)
     return clonedInputControls;
 }
 

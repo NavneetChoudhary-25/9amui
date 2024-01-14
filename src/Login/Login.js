@@ -34,7 +34,7 @@ export const Login = () => {
               <b>{lbl}:</b>
             </div>
             <div className='col-sm-3'>
-              < Input model={model} type={type} handleChange={fnChange} />
+              < Input model={model} type={type} value={value} handleChange={fnChange} />
             </div>
             <div className='col-sm-4'>
               <b className='text-danger'>{errorMessage}</b>
