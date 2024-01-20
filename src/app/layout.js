@@ -2,28 +2,29 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import { Header } from '@/Header'
-import { Footer } from '@/Footer'
+import 'react-toastify/dist/ReactToastify.css'
 import { appStore } from '@/store/appStore'
 import { Provider } from 'react-redux'
-import { Menu } from '@/Menu'
-import { Loader } from '@/Loader'
+import LayoutWrapper from './layoutWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({ children }) {
+function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Provider store={appStore}>
-        < Header />
-        < Menu />
-        {children}
-        < Loader />
-        < Footer />
+          < LayoutWrapper>
+            {children}
+          </LayoutWrapper>
+
         </Provider>
-        
-        </body>
+
+      </body>
     </html>
   )
 }
+
+
+export default RootLayout

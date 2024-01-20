@@ -5,7 +5,7 @@
         "type": "text",
         "model": "name",
         "errorMessage": "",
-        "value": "abc",
+        "value": "",
         "criteria": [
             "Required"
         ]
@@ -16,7 +16,7 @@
         "type": "text",
         "model": "uid",
         "errorMessage": "",
-        "value": "abc@gmail.com",
+        "value": "",
         "criteria": [
             "Required",
             "EmailFormat"
@@ -28,7 +28,7 @@
         "model": "pwd",
         "type": "password",
         "errorMessage": "",
-        "value": "1234",
+        "value": "",
         "criteria": [
             "Required",
             "Min5Chars"
@@ -40,7 +40,7 @@
         "model": "dob",
         "type": "date",
         "errorMessage": "",
-        "value": "2023-10-10",
+        "value": "",
         "criteria": [
             "Required"
         ] 
@@ -59,7 +59,7 @@
             "M",
             "F"
         ],
-        "value": "F",
+        "value": "",
         "criteria": [
             "Required"
         ]
@@ -80,7 +80,7 @@
             "fb",
             "box"
         ],
-        "value": "cric,box",
+        "value": "",
         "criteria": [
             "Required"
         ]
@@ -100,7 +100,7 @@
             "chi",
             "us"
         ],
-        "value": "us",
+        "value": "",
         "criteria": [
             "Required"
         ]
@@ -110,7 +110,7 @@
         "tag": "textarea",
         "model": "address",
         "errorMessage": "",
-        "value": "abcde",
+        "value": "",
         "criteria": [
             "Required"
         ]

@@ -1,37 +1,57 @@
 "use client"
 import React, { useState } from 'react'
-import styles from'./register.module.css'
+import styles from './register.module.css'
 import configuration from './configuration.json'
 import Link from 'next/link'
 import { Input } from '@/inputControls/Input'
 import { Select } from '@/inputControls/select'
 import { Textarea } from '@/inputControls/textarea'
-import { handleFieldValidation,handleFormValidation } from '@/validations/appValidations'
+import { appStore } from '@/store/appStore'
+import { toast } from 'react-toastify'
+import { handleFieldValidation, handleFormValidation, formReset } from '@/validations/appValidations'
+import axios from 'axios'
+import { Api } from '@/common/api'
+
 
 const Register = () => {
-  const [inputControls,setInputControls] = useState(configuration)
-  const fnChange =( eve ) =>{
-    setInputControls (handleFieldValidation(eve,inputControls))
+  const [inputControls, setInputControls] = useState(configuration)
+  const fnChange = (eve) => {
+    setInputControls(handleFieldValidation(eve, inputControls))
 
   }
-  const handleRegister = () => {
-    const[isFormInvalid, clonedInputControls, dataObj] = handleFormValidation(inputControls)
-    if (isFormInvalid){
-      setInputControls(clonedInputControls)
-      return;
+  const handleRegister = async () => {
+    try {
+      const [isFormInvalid, clonedInputControls, dataObj] = handleFormValidation(inputControls)
+      if (isFormInvalid) {
+        setInputControls(clonedInputControls)
+        return;
+      }
+      appStore.dispatch({ type: "LOADER", payload: true })
+      const res = await Api.fnSendPostReq("std/reg-std", { data: dataObj })
+      const { acknowledged, insertedId } = res?.data
+      if (acknowledged && insertedId) {
+        toast.success("Successfully Inserted")
+        setInputControls(formReset(inputControls))
+      } else {
+        toast.error("Not Inserted, Try Again")
+      }
+
+    } catch (ex) {
+      console.error("register", ex)
+      toast.error("Something Went Wrong")
+
+    } finally {
+      appStore.dispatch({ type: "LOADER", payload: false })
     }
-    alert("sending request")
-    console.log(dataObj)
-
   }
-  const prepareInputControls=(tag,obj)=>{
-    switch(tag){
+  const prepareInputControls = (tag, obj) => {
+    switch (tag) {
       case 'input':
-      return < Input {...obj} handleChange={fnChange} />
+        return < Input {...obj} handleChange={fnChange} />
       case 'select':
-      return < Select {...obj} handleChange={fnChange} />
-      default: 
-      return < Textarea {...obj} handleChange={fnChange} />
+        return < Select {...obj} handleChange={fnChange} />
+      default:
+        return < Textarea {...obj} handleChange={fnChange} />
 
     }
 
@@ -42,13 +62,13 @@ const Register = () => {
       <h2 className='text-center my-3'>Register</h2>
       {
         inputControls?.map((obj) => {
-          const {lbl, errorMessage,tag} = obj;
+          const { lbl, errorMessage, tag } = obj;
           return <div className='row mb-3'>
             <div className='col-sm-5 text-end'>
               <b>{lbl}:</b>
             </div>
             <div className='col-sm-3'>
-           {prepareInputControls(tag,obj)}
+              {prepareInputControls(tag, obj)}
             </div>
             <div className='col-sm-4'>
               <b className='text-danger'>{errorMessage}</b>
@@ -60,9 +80,9 @@ const Register = () => {
 
 
       <div className='row'>
-        <div className ='offset-sm-5 col-sm-7'>
-          <button onClick={handleRegister} className ='btn btn-primary me-3'>Register</button>
-          <Link href ="/">To Login</Link>
+        <div className='offset-sm-5 col-sm-7'>
+          <button onClick={handleRegister} className='btn btn-primary me-3'>Register</button>
+          <Link href="/">To Login</Link>
         </div>
 
       </div>

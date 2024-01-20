@@ -5,7 +5,7 @@
         "type": "text",
         "model": "uid",
         "errorMessage": "",
-        "value": "abc@gmail.com",
+        "value": "",
         "criteria": [
             "Required","EmailFormat"
         ]
@@ -16,7 +16,7 @@
         "model": "pwd",
         "type": "password",
         "errorMessage": "",
-        "value": "1234",
+        "value": "",
         "criteria": [
             "Required","Min5Chars"
         ] 
