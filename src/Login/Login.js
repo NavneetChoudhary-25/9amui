@@ -47,8 +47,8 @@ export const Login = () => {
     <div className='container-fluid'>
       <h2 className='text-center my-3'>Login</h2>
       {
-        inputControls?.map(({ lbl, tag, type, value, errorMessage, model }) => {
-          return <div className='row mb-3'>
+        inputControls?.map(({ lbl, tag, type, value, errorMessage, model },index) => {
+          return <div key={`div_${index}`} className='row mb-3'>
             <div className='col-sm-5 text-end'>
               <b>{lbl}:</b>
             </div>

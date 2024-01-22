@@ -10,7 +10,7 @@ import { appStore } from '@/store/appStore'
 import { toast } from 'react-toastify'
 import { handleFieldValidation, handleFormValidation, formReset } from '@/validations/appValidations'
 import axios from 'axios'
-import { Api } from '@/common/api'
+import { Api } from '@/common/Api'
 
 
 const Register = () => {
