@@ -1,12 +1,19 @@
+"use client"
 import Image from 'next/image'
 import styles from './page.module.css'
 import { Login } from '@/Login'
+import { Home } from '@/Home'
+import { useSelector } from 'react-redux'
 
 
-export default function Home() {
+export default function App() {
+  const state = useSelector((state)=>state)
   return (
-   <div className={styles.clr}>
-    < Login />
+   <div >
+    {
+      state?.appReducer?.isLoggedIn ? < Home /> : < Login />
+    }
+    
     </div>
   )
 }

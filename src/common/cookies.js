@@ -10,6 +10,7 @@ const getOneDayBeforeDate = () => {
 }
 
 const convertCookiesToJSON = () => {
+    
     const cookiesArr = window.document.cookie.split(";");
     const cookiesObj = cookiesArr?.reduce((init, val) => {
         const [key, value] = val?.split('=');
@@ -22,7 +23,7 @@ export class Cookies {
     static hasActiveSession = () => {
         if (typeof window === 'undefined') return;
         const cookiesObj = convertCookiesToJSON();
-        if (cookiesObj["token"]) {
+        if (cookiesObj["uid"]) {
             return true;
         }
         return false
