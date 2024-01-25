@@ -24,22 +24,23 @@ export const Login = () => {
         setInputControls(clonedInputControls)
         return;
       }
-      dispatch({type:"LOADER", payload:true})
+      dispatch({ type: "LOADER", payload: true })
       const res = await Api.fnSendPostReq('std/login', { data: dataObj })
-      if(res?.data?.length){
-        const {uid} = res?.data[0];
-      dispatch({type:"AUTH", payload:true})
-      Cookies.setItem("uid",uid)
-      }else{
+      if (res?.data?.length) {
+        const { token, _id } = res?.data[0];
+        dispatch({ type: "AUTH", payload: true })
+        Cookies.setItem("token", token)
+        Cookies.setItem("id", _id)
+      } else {
         toast.error("please check entered uid and pwd")
       }
-      console.log(11,res.data)
+      console.log(11, res.data)
     } catch (ex) {
 
 
     } finally {
 
-      dispatch({type:"LOADER", payload:false})
+      dispatch({ type: "LOADER", payload: false })
     }
   }
 
@@ -47,7 +48,7 @@ export const Login = () => {
     <div className='container-fluid'>
       <h2 className='text-center my-3'>Login</h2>
       {
-        inputControls?.map(({ lbl, tag, type, value, errorMessage, model },index) => {
+        inputControls?.map(({ lbl, tag, type, value, errorMessage, model }, index) => {
           return <div key={`div_${index}`} className='row mb-3'>
             <div className='col-sm-5 text-end'>
               <b>{lbl}:</b>
