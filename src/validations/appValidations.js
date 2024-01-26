@@ -43,19 +43,22 @@ export const handleFormValidation = (inputControls) => {
         dataObj[model] = value;
         validateField(value, criteria, inputControlObj)
     })
-
     const isFormInvalid = clonedInputControls.some((inputControlObj) => {
         return inputControlObj?.errorMessage?.length > 0
     })
     return [isFormInvalid, clonedInputControls, dataObj]
-
 }
-
 export const formReset = (inputControls) => {
     const clonedInputControls = JSON.parse(JSON.stringify(inputControls))
     clonedInputControls.forEach((inputControlObj) => {
         inputControlObj.value = "";
     })
     return clonedInputControls
-
+}
+export const formSetData = (inputControls,data) => {
+    const clonedInputControls = JSON.parse(JSON.stringify(inputControls))
+    clonedInputControls.forEach((inputControlObj) => {
+        inputControlObj.value = data[inputControlObj.model];
+    })
+    return clonedInputControls
 }

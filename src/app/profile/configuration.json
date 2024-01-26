@@ -1,0 +1,119 @@
+[
+    {
+        "lbl": "Full Name",
+        "tag": "input",
+        "type": "text",
+        "model": "name",
+        "errorMessage": "",
+        "value": "",
+        "criteria": [
+            "Required"
+        ]
+    },
+    {
+        "lbl": "User Id",
+        "tag": "input",
+        "type": "text",
+        "model": "uid",
+        "errorMessage": "",
+        "value": "",
+        "isReadOnly": true,
+        "criteria": [
+            "Required",
+            "EmailFormat"
+        ]
+    },
+    {
+        "lbl": "Password",
+        "tag": "input",
+        "model": "pwd",
+        "type": "text",
+        "errorMessage": "",
+        "value": "",
+        "criteria": [
+            "Required",
+            "Min5Chars"
+        ] 
+    },
+    {
+        "lbl": "Date Of Birth",
+        "tag": "input",
+        "model": "dob",
+        "type": "date",
+        "errorMessage": "",
+        "value": "",
+        "criteria": [
+            "Required"
+        ] 
+    },
+    {
+        "lbl": "Gender",
+        "tag": "input",
+        "type": "radio",
+        "model": "gender",
+        "errorMessage": "",
+        "options": [
+            "Male",
+            "Female"
+        ],
+        "values": [
+            "M",
+            "F"
+        ],
+        "value": "",
+        "criteria": [
+            "Required"
+        ]
+    },
+    {
+        "lbl": "Hobbies",
+        "tag": "input",
+        "type": "checkbox",
+        "model": "hobbies",
+        "errorMessage": "",
+        "options": [
+            "Cricket",
+            "Football",
+            "Boxing"
+        ],
+        "values": [
+            "cric",
+            "fb",
+            "box"
+        ],
+        "value": "",
+        "criteria": [
+            "Required"
+        ]
+    },
+    {
+        "lbl": "Country",
+        "tag": "select",
+        "model": "country",
+        "errorMessage": "",
+        "options": [
+            "India",
+            "China",
+            "United States"
+        ],
+        "values": [
+            "ind",
+            "chi",
+            "us"
+        ],
+        "value": "",
+        "criteria": [
+            "Required"
+        ]
+    },
+    {
+        "lbl": "Address",
+        "tag": "textarea",
+        "model": "address",
+        "errorMessage": "",
+        "value": "",
+        "criteria": [
+            "Required"
+        ]
+    } 
+]

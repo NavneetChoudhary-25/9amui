@@ -1,14 +1,14 @@
 "use client"
 import React, { Fragment } from 'react'
 
-export const Input = ({ type, value, model, handleChange, options, values }) => {
+export const Input = ({ type, value, model, handleChange, options, values, isReadOnly }) => {
   switch (type) {
     case 'text':
     case 'password':
     case 'date':
       return (
         <Fragment>
-          <input value={value} name={model} onChange={handleChange} className='form-control' type={type} />
+          <input disabled={isReadOnly} value={value} name={model} onChange={handleChange} className='form-control' type={type} />
         </Fragment>
       )
     case 'radio':

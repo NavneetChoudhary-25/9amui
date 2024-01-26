@@ -9,15 +9,12 @@ import { Textarea } from '@/inputControls/textarea'
 import { appStore } from '@/store/appStore'
 import { toast } from 'react-toastify'
 import { handleFieldValidation, handleFormValidation, formReset } from '@/validations/appValidations'
-import axios from 'axios'
 import { Api } from '@/common/Api'
-
 
 const Register = () => {
   const [inputControls, setInputControls] = useState(configuration)
   const fnChange = (eve) => {
     setInputControls(handleFieldValidation(eve, inputControls))
-
   }
   const handleRegister = async () => {
     try {
@@ -30,7 +27,7 @@ const Register = () => {
       const res = await Api.fnSendPostReq("std/reg-std", { data: dataObj })
       const { acknowledged, insertedId } = res?.data
       if (acknowledged && insertedId) {
-        toast.success("Successfully Inserted")
+        toast.success("Successfully Registered")
         setInputControls(formReset(inputControls))
       } else {
         toast.error("Not Inserted, Try Again")
@@ -52,18 +49,14 @@ const Register = () => {
         return < Select {...obj} handleChange={fnChange} />
       default:
         return < Textarea {...obj} handleChange={fnChange} />
-
     }
-
   }
-
   return (
     <div className='container-fluid'>
       <h2 className='text-center my-3'>Register</h2>
       {
-        inputControls?.map((obj,index) => {
+        inputControls?.map((obj, index) => {
           const { lbl, errorMessage, tag } = obj;
-
           return <div key={`div_${index}`} className='row mb-3'>
             <div className='col-sm-5 text-end'>
               <b>{lbl}:</b>
@@ -73,21 +66,16 @@ const Register = () => {
             </div>
             <div className='col-sm-4'>
               <b className='text-danger'>{errorMessage}</b>
-
             </div>
           </div>
         })
       }
-
-
       <div className='row'>
         <div className='offset-sm-5 col-sm-7'>
           <button onClick={handleRegister} className='btn btn-primary me-3'>Register</button>
           <Link href="/">To Login</Link>
         </div>
-
       </div>
-
     </div>
   )
 }
