@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import styles from './Login.module.css'
 import Link from 'next/link'
 import configuration from './configuration.json'
 import { Input } from '@/inputControls/Input'
@@ -34,9 +33,7 @@ export const Login = () => {
       } else {
         toast.error("please check entered uid and pwd")
       }
-      console.log(11, res.data)
     } catch (ex) {
-
 
     } finally {
 
