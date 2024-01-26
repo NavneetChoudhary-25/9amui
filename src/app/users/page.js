@@ -24,6 +24,7 @@ const Users = () => {
   }
 
   useEffect(() => {
+    console.log("users")
     fnGetUsers();
   }, [])
 
