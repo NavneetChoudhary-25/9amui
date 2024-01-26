@@ -55,7 +55,7 @@ export const formReset = (inputControls) => {
     })
     return clonedInputControls
 }
-export const formSetData = (inputControls,data) => {
+export const formSetData = (inputControls, data) => {
     const clonedInputControls = JSON.parse(JSON.stringify(inputControls))
     clonedInputControls.forEach((inputControlObj) => {
         inputControlObj.value = data[inputControlObj.model];

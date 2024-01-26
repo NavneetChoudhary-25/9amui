@@ -10,7 +10,7 @@ export const Home = () => {
   }
   return (
     <div>
-        <h1 className='mx-5 my-5 text-center'>Welcome...</h1>  
+      <h1 className='mx-5 my-5 text-center'>Welcome...</h1>
     </div>
   )
 }
